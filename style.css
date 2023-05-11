@@ -80,7 +80,7 @@ a.active {
 .home{
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     align-items: center;
     justify-content: space-between;
     padding: 100px 10%;
@@ -88,7 +88,7 @@ a.active {
 }
 .home-content{
     color: #fff;
-    
+    margin-right: 30px;
    
 }
 
@@ -147,6 +147,7 @@ a.active {
     position: relative;
     display: flex;
     align-items: center;
+    /* justify-content: center; */
 }
 .home-image img{
     max-width: 450px;
@@ -154,54 +155,45 @@ a.active {
     animation: zoom 1.5s ease forwards;
     animation-delay: .5s;
     opacity: 0;
-    transition: .2s ease-in-out;
-   
+    transition: .3s ease-in-out;   
 }
 
-.home-image::before{
+.home-image::after{
     content: "";
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 15px;
-    left: 15px;
+    top: 14px;
+    left: 14px;
     border: 2px solid #0ef;
     border-radius: 5px;
-    z-index: -1;
     transition: .3s ease;
+    opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1.5s;
-    opacity: 0;
+    z-index: -1;
 }
 
-.home-image::after {
-    content: "";
-    display: block;
+.overlay {
     position: absolute;
+    display: block;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-color: #001e4a54; */
-    background-color: #03192674;
-    /* background-color: rgba(0, 238, 255, 0.04); */
-    /* background-color: rgba(14, 15, 20, 0.8); */
-
+    background-color: #03192674;    
+    transition: opacity 0.3s;
+    animation: zoom 2s ease ;
     z-index: 1;
+  }
+  .home-image:hover .overlay{
     opacity: 0;
-    border-radius: 5px;
-    animation: slideTop 1s ease forwards , fadeIntOverlay .5s ease-in-out forwards;
-   
-}
-
-.home-image:hover::before {
+  }
+.home-image:hover::after {
     top: 20px;
     left: 20px;
-}
-.home-image:hover::after {
-    opacity: 0;
-    animation: fadeOutOverlay .1s ease-in-out forwards;
+    
 }
 
 .home-image:hover.home-image img{
@@ -303,7 +295,7 @@ a.active {
     }
     100% {
       opacity: 1;
-      animation-delay:10s ;
+      animation-delay:1s ;
     }
   }
 
@@ -352,6 +344,10 @@ a.active {
   }
 
 @media  screen and (max-width: 575px) {
+    .home-content{
+       margin: 0;
+       
+    }
     .home-content h3{
         font-size: 28px;
     }
